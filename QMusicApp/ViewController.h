@@ -12,6 +12,13 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel* venueLabel;
+@property (nonatomic, weak) IBOutlet UILabel* currentSongLabel;
+@property (nonatomic, weak) IBOutlet UILabel* currentArtistLabel;
+@property (nonatomic, weak) IBOutlet UILabel* suggesterLabel;
+@property (nonatomic, weak) IBOutlet UIImageView* currentArtwork;
+@property (nonatomic, weak) IBOutlet UIButton* voteButton;
+@property (nonatomic, strong) IBOutlet UISlider* songProgress;
+
 
 @end
 
