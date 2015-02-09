@@ -14,6 +14,8 @@
 		7B6A91761A88707B001CE5D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B6A91751A88707B001CE5D9 /* Images.xcassets */; };
 		7B6A91791A88707B001CE5D9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6A91771A88707B001CE5D9 /* LaunchScreen.xib */; };
 		7B6A91851A88707B001CE5D9 /* QMusicAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A91841A88707B001CE5D9 /* QMusicAppTests.m */; };
+		7B6A918F1A887232001CE5D9 /* TheQueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6A918E1A887232001CE5D9 /* TheQueCell.xib */; };
+		7B6A91921A8872D9001CE5D9 /* TheQueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A91911A8872D9001CE5D9 /* TheQueCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,9 @@
 		7B6A917E1A88707B001CE5D9 /* QMusicAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QMusicAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6A91831A88707B001CE5D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B6A91841A88707B001CE5D9 /* QMusicAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QMusicAppTests.m; sourceTree = "<group>"; };
+		7B6A918E1A887232001CE5D9 /* TheQueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TheQueCell.xib; sourceTree = "<group>"; };
+		7B6A91901A8872D9001CE5D9 /* TheQueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheQueCell.h; sourceTree = "<group>"; };
+		7B6A91911A8872D9001CE5D9 /* TheQueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheQueCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B5855421A8898C80066063C /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		7B6A915C1A88707B001CE5D9 = {
 			isa = PBXGroup;
 			children = (
@@ -81,10 +93,14 @@
 		7B6A91671A88707B001CE5D9 /* QMusicApp */ = {
 			isa = PBXGroup;
 			children = (
+				7B5855421A8898C80066063C /* images */,
 				7B6A916C1A88707B001CE5D9 /* AppDelegate.h */,
 				7B6A916D1A88707B001CE5D9 /* AppDelegate.m */,
 				7B6A916F1A88707B001CE5D9 /* ViewController.h */,
 				7B6A91701A88707B001CE5D9 /* ViewController.m */,
+				7B6A91901A8872D9001CE5D9 /* TheQueCell.h */,
+				7B6A91911A8872D9001CE5D9 /* TheQueCell.m */,
+				7B6A918E1A887232001CE5D9 /* TheQueCell.xib */,
 				7B6A91721A88707B001CE5D9 /* Main.storyboard */,
 				7B6A91751A88707B001CE5D9 /* Images.xcassets */,
 				7B6A91771A88707B001CE5D9 /* LaunchScreen.xib */,
@@ -202,6 +218,7 @@
 				7B6A91741A88707B001CE5D9 /* Main.storyboard in Resources */,
 				7B6A91791A88707B001CE5D9 /* LaunchScreen.xib in Resources */,
 				7B6A91761A88707B001CE5D9 /* Images.xcassets in Resources */,
+				7B6A918F1A887232001CE5D9 /* TheQueCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +239,7 @@
 				7B6A91711A88707B001CE5D9 /* ViewController.m in Sources */,
 				7B6A916E1A88707B001CE5D9 /* AppDelegate.m in Sources */,
 				7B6A916B1A88707B001CE5D9 /* main.m in Sources */,
+				7B6A91921A8872D9001CE5D9 /* TheQueCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +432,7 @@
 				7B6A918A1A88707B001CE5D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7B6A918B1A88707B001CE5D9 /* Build configuration list for PBXNativeTarget "QMusicAppTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +441,7 @@
 				7B6A918D1A88707B001CE5D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

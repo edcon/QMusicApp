@@ -10,6 +10,8 @@
 
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UILabel* venueLabel;
 
 @end
 
