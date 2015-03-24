@@ -7,25 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B5855461A889A2D0066063C /* venue_select_icon_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5855451A889A2D0066063C /* venue_select_icon_@2x.png */; };
-		7B5855481A889DF60066063C /* hellofanight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5855471A889DF60066063C /* hellofanight@2x.png */; };
-		7B58554B1A889F920066063C /* KendrickGKMC@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5855491A889F920066063C /* KendrickGKMC@2x.png */; };
-		7B58554C1A889F920066063C /* Fluorescent_Adolescent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B58554A1A889F920066063C /* Fluorescent_Adolescent@2x.png */; };
-		7B58554E1A88A0250066063C /* OutkastHeyYa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B58554D1A88A0250066063C /* OutkastHeyYa@2x.png */; };
-		7B5855501A88A0A50066063C /* majorlazer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B58554F1A88A0A50066063C /* majorlazer@2x.png */; };
-		7B5855521A88A0A90066063C /* goodnews@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5855511A88A0A90066063C /* goodnews@2x.png */; };
-		7B5855541A88A0AC0066063C /* timeslikethese@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5855531A88A0AC0066063C /* timeslikethese@2x.png */; };
-		7B5855561A88A1810066063C /* current_view_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5855551A88A1810066063C /* current_view_bg@2x.png */; };
-		7B58555A1A88A5350066063C /* upvote_icony@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5855591A88A5350066063C /* upvote_icony@2x.png */; };
 		7B6A916B1A88707B001CE5D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A916A1A88707B001CE5D9 /* main.m */; };
 		7B6A916E1A88707B001CE5D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A916D1A88707B001CE5D9 /* AppDelegate.m */; };
 		7B6A91711A88707B001CE5D9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A91701A88707B001CE5D9 /* ViewController.m */; };
-		7B6A91741A88707B001CE5D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B6A91721A88707B001CE5D9 /* Main.storyboard */; };
 		7B6A91761A88707B001CE5D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B6A91751A88707B001CE5D9 /* Images.xcassets */; };
-		7B6A91791A88707B001CE5D9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6A91771A88707B001CE5D9 /* LaunchScreen.xib */; };
 		7B6A91851A88707B001CE5D9 /* QMusicAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A91841A88707B001CE5D9 /* QMusicAppTests.m */; };
 		7B6A918F1A887232001CE5D9 /* TheQueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6A918E1A887232001CE5D9 /* TheQueCell.xib */; };
 		7B6A91921A8872D9001CE5D9 /* TheQueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A91911A8872D9001CE5D9 /* TheQueCell.m */; };
+		DB8FFB5621F5940D7A978086 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0FDB839A553A5E7D83486B /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B79262BF729CDA0C5798D30 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7B5855451A889A2D0066063C /* venue_select_icon_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "venue_select_icon_@2x.png"; path = "../../../Desktop/venue_select_icon_@2x.png"; sourceTree = "<group>"; };
 		7B5855471A889DF60066063C /* hellofanight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hellofanight@2x.png"; path = "../../../Desktop/hellofanight@2x.png"; sourceTree = "<group>"; };
 		7B5855491A889F920066063C /* KendrickGKMC@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "KendrickGKMC@2x.png"; path = "../../../Desktop/KendrickGKMC@2x.png"; sourceTree = "<group>"; };
@@ -65,6 +55,8 @@
 		7B6A918E1A887232001CE5D9 /* TheQueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TheQueCell.xib; sourceTree = "<group>"; };
 		7B6A91901A8872D9001CE5D9 /* TheQueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheQueCell.h; sourceTree = "<group>"; };
 		7B6A91911A8872D9001CE5D9 /* TheQueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheQueCell.m; sourceTree = "<group>"; };
+		A5F6936943BCDA9A58A0FBB8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BF0FDB839A553A5E7D83486B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8FFB5621F5940D7A978086 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +101,8 @@
 				7B6A91671A88707B001CE5D9 /* QMusicApp */,
 				7B6A91811A88707B001CE5D9 /* QMusicAppTests */,
 				7B6A91661A88707B001CE5D9 /* Products */,
+				971D10EA7FC9DDB59AC7C2B6 /* Pods */,
+				C0ACF58F5AECA15921BA8669 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +160,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		971D10EA7FC9DDB59AC7C2B6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A5F6936943BCDA9A58A0FBB8 /* Pods.debug.xcconfig */,
+				3B79262BF729CDA0C5798D30 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C0ACF58F5AECA15921BA8669 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF0FDB839A553A5E7D83486B /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,9 +184,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7B6A91881A88707B001CE5D9 /* Build configuration list for PBXNativeTarget "QMusicApp" */;
 			buildPhases = (
+				9FA3FFB2D70AA8A730A4B331 /* Check Pods Manifest.lock */,
 				7B6A91611A88707B001CE5D9 /* Sources */,
 				7B6A91621A88707B001CE5D9 /* Frameworks */,
 				7B6A91631A88707B001CE5D9 /* Resources */,
+				7B57B17140CA0416F07255F3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,18 +259,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B58554B1A889F920066063C /* KendrickGKMC@2x.png in Resources */,
-				7B5855501A88A0A50066063C /* majorlazer@2x.png in Resources */,
-				7B6A91741A88707B001CE5D9 /* Main.storyboard in Resources */,
-				7B5855481A889DF60066063C /* hellofanight@2x.png in Resources */,
-				7B6A91791A88707B001CE5D9 /* LaunchScreen.xib in Resources */,
-				7B5855521A88A0A90066063C /* goodnews@2x.png in Resources */,
-				7B58555A1A88A5350066063C /* upvote_icony@2x.png in Resources */,
-				7B5855541A88A0AC0066063C /* timeslikethese@2x.png in Resources */,
-				7B5855561A88A1810066063C /* current_view_bg@2x.png in Resources */,
-				7B5855461A889A2D0066063C /* venue_select_icon_@2x.png in Resources */,
-				7B58554C1A889F920066063C /* Fluorescent_Adolescent@2x.png in Resources */,
-				7B58554E1A88A0250066063C /* OutkastHeyYa@2x.png in Resources */,
 				7B6A91761A88707B001CE5D9 /* Images.xcassets in Resources */,
 				7B6A918F1A887232001CE5D9 /* TheQueCell.xib in Resources */,
 			);
@@ -270,6 +272,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7B57B17140CA0416F07255F3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FA3FFB2D70AA8A730A4B331 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7B6A91611A88707B001CE5D9 /* Sources */ = {
@@ -401,6 +436,7 @@
 		};
 		7B6A91891A88707B001CE5D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5F6936943BCDA9A58A0FBB8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = QMusicApp/Info.plist;
@@ -411,6 +447,7 @@
 		};
 		7B6A918A1A88707B001CE5D9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B79262BF729CDA0C5798D30 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = QMusicApp/Info.plist;

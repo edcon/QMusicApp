@@ -37,7 +37,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.14999999999999969" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="current_view_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="DS9-8I-dEQ">
-                        <rect key="frame" x="-45" y="24" width="487" height="40"/>
+                        <rect key="frame" x="-45" y="4" width="487" height="61"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,7 +50,7 @@
                 <outlet property="voteButton" destination="tcb-UW-D51" id="cf7-oR-jWH"/>
                 <outlet property="voteNumber" destination="qse-Fj-Gnk" id="KR0-VJ-dQv"/>
             </connections>
-            <point key="canvasLocation" x="304.5" y="369"/>
+            <point key="canvasLocation" x="304.5" y="368"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -39,14 +39,14 @@ NSArray *songImages;
     currentSongLabel.text = @"Hell of a Night";
     currentArtistLabel.text = @"Schoolboy Q";
     suggesterLabel.text = @"JohnDoe6";
-    currentArtwork.image = [UIImage imageNamed:@"hellofanight@2x.png"];
-    currentArtwork.image = [UIImage imageNamed:@"hellofanight@2x.png"];
+    //currentArtwork.image = [UIImage imageNamed:@"hellofanight@2x.png"];
+   // currentArtwork.image = [UIImage imageNamed:@"hellofanight@2x.png"];
     
     //Dummy data for song queue
     songNames = [NSArray arrayWithObjects:@"Hey Ya",@"Money Trees",@"Come On To Me",@"Flourescent Adolescent", @"Float On", @"Times Like These", @"Whole Lotta Love", @"Bad Romance", @"TNT", @"Here I Am", nil];
     artistNames = [NSArray arrayWithObjects:@"OutKast",@"Kendrick Lamar",@"Major Lazer",@"Arctic Monkeys", @"Modest Mouse", @"Foo Fighters", @"Led Zeppelin", @"Lady Gaga", @"ACDC", @"Rick Ross", nil];
     numberVotes = [NSArray arrayWithObjects:@"17",@"15",@"12",@"9", @"7", @"7", @"5", @"4", @"2", @"1",  nil];
-    songImages = [NSArray arrayWithObjects:@"OutkastHeyYa@2x.png",@"KendrickGKMC@2x.png",@"majorlazer@2x.png",@"Fluorescent_Adolescent@2x.png", @"goodnews@2x.png", @"timeslikethese@2x.png", @"", @"", @"", @"", nil];
+    //songImages = [NSArray arrayWithObjects:@"OutkastHeyYa@2x.png",@"KendrickGKMC@2x.png",@"majorlazer@2x.png",@"Fluorescent_Adolescent@2x.png", @"goodnews@2x.png", @"timeslikethese@2x.png", @"", @"", @"", @"", nil];
     
 
 }
