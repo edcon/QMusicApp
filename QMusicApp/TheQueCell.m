@@ -15,6 +15,8 @@
 @synthesize voteNumber;
 @synthesize songArtwork;
 @synthesize voteButton;
+@synthesize voteIcon;
+@synthesize isUpvoted;
 
 - (void)awakeFromNib {
     // Initialization code
@@ -22,6 +24,13 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+    
+    if (isUpvoted == FALSE) {
+        isUpvoted = TRUE;
+        
+    } else if (isUpvoted == TRUE){
+        isUpvoted = FALSE;
+    }
 
     // Configure the view for the selected state
 }

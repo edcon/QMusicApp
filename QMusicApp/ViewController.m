@@ -8,8 +8,14 @@
 
 #import "ViewController.h"
 #import "TheQueCell.h"
+#import <RestKit/RestKit.h>
+#import "Venue.h"
+
+NSArray *venu;
 
 @interface ViewController ()
+
+@property (nonatomic, strong) NSArray *venues;
 
 @end
 
@@ -20,9 +26,12 @@ NSArray *artistNames;
 NSArray *numberVotes;
 NSArray *songImages;
 
+NSString *voteUp;
+
+NSNumber *upVote;
 
 @synthesize tableView;
-@synthesize venueLabel;
+@synthesize venueButton;
 @synthesize currentSongLabel;
 @synthesize currentArtistLabel;
 @synthesize suggesterLabel;
@@ -33,22 +42,38 @@ NSArray *songImages;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+
+    [self.tableView reloadData];
+  
     
     //Handle venue information and current playing song info
-    venueLabel.text = @"Kellys Taproom";
+    [venueButton setTitle:@"Kelly's Taproom" forState:UIControlStateNormal];
     currentSongLabel.text = @"Hell of a Night";
     currentArtistLabel.text = @"Schoolboy Q";
     suggesterLabel.text = @"JohnDoe6";
-    //currentArtwork.image = [UIImage imageNamed:@"hellofanight@2x.png"];
-   // currentArtwork.image = [UIImage imageNamed:@"hellofanight@2x.png"];
+    currentArtwork.image = [UIImage imageNamed:@"hellofanight@2x.png"];
+    currentArtwork.image = [UIImage imageNamed:@"hellofanight@2x.png"];
+    
+    currentArtwork.layer.cornerRadius = 5.0;
+    currentArtwork.layer.masksToBounds = YES;
+    
+    currentArtwork.layer.borderColor = [UIColor whiteColor].CGColor;
+    currentArtwork.layer.borderWidth = 1.0;
+    
+    venueButton.layer.cornerRadius = 10; // this value vary as per your desire
+    venueButton.clipsToBounds = YES;
     
     //Dummy data for song queue
+    
     songNames = [NSArray arrayWithObjects:@"Hey Ya",@"Money Trees",@"Come On To Me",@"Flourescent Adolescent", @"Float On", @"Times Like These", @"Whole Lotta Love", @"Bad Romance", @"TNT", @"Here I Am", nil];
     artistNames = [NSArray arrayWithObjects:@"OutKast",@"Kendrick Lamar",@"Major Lazer",@"Arctic Monkeys", @"Modest Mouse", @"Foo Fighters", @"Led Zeppelin", @"Lady Gaga", @"ACDC", @"Rick Ross", nil];
-    numberVotes = [NSArray arrayWithObjects:@"17",@"15",@"12",@"9", @"7", @"7", @"5", @"4", @"2", @"1",  nil];
-    //songImages = [NSArray arrayWithObjects:@"OutkastHeyYa@2x.png",@"KendrickGKMC@2x.png",@"majorlazer@2x.png",@"Fluorescent_Adolescent@2x.png", @"goodnews@2x.png", @"timeslikethese@2x.png", @"", @"", @"", @"", nil];
+    numberVotes = [NSArray arrayWithObjects: @"17",@"1",@"12",@"9", @"7", @"7", @"4", @"4", @"2", @"15",  nil];
+    songImages = [NSArray arrayWithObjects:@"OutkastHeyYa@2x.png",@"KendrickGKMC@2x.png",@"majorlazer@2x.png",@"Fluorescent_Adolescent@2x.png", @"goodnews@2x.png", @"timeslikethese@2x.png", @"Wllsingle@2x.png", @"LadyGaGaBadRomance@2x.png", @"tnt@2x.png", @"ricky@2x.png", nil];
     
-
+    
+ 
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,20 +83,26 @@ NSArray *songImages;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+
     return 10;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
+   
     static NSString *simpleTableIdentifier = @"TheQueCell";
-    
+
     TheQueCell *cell = (TheQueCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    //TheQueCell *cell = (TheQueCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+
     if (cell == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TheQueCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    
+    //Venue *venueName = venu[indexPath.row];
+    //NSLog(@"\nNAME OF VENUE2: %@\n", venu[0]);
+
     cell.nameLabel.text = [songNames objectAtIndex:indexPath.row];
     cell.artistLabel.text = [artistNames objectAtIndex:indexPath.row];
     cell.voteNumber.text = [numberVotes objectAtIndex:indexPath.row];
@@ -80,11 +111,44 @@ NSArray *songImages;
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    static NSString *simpleTableIdentifier = @"TheQueCell";
+    TheQueCell *cell = (TheQueCell *)[tableView cellForRowAtIndexPath:indexPath];
+
+    voteUp = cell.voteNumber.text;
+    
+    if(cell.isUpvoted == FALSE){
+        upVote = @([voteUp intValue] + 1);
+        cell.voteIcon.image = [UIImage imageNamed:@"arrowgreen@2x.png"];
+
+    } else {
+        upVote = @([voteUp intValue] - 1);
+        cell.voteIcon.image = [UIImage imageNamed:@"arrow@2x.png"];
+
+    }
+    
+    
+   /*NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"numberVotes" ascending:TRUE];
+    numberVotes = [numberVotes sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [tableView reloadData];*/
+    
+    
+    cell.voteNumber.text = [NSString stringWithFormat:@"%@",upVote];
+    
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+//    UIAlertView *messageAlert = [[UIAlertView alloc] initWithTitle:@"Row Selected" message:@"You've selected a row" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+//    [messageAlert show];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 64;
 }
-
 
 
 @end

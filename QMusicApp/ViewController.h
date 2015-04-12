@@ -11,7 +11,7 @@
 @interface ViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, weak) IBOutlet UILabel* venueLabel;
+@property (nonatomic, weak) IBOutlet UIButton* venueButton;
 @property (nonatomic, weak) IBOutlet UILabel* currentSongLabel;
 @property (nonatomic, weak) IBOutlet UILabel* currentArtistLabel;
 @property (nonatomic, weak) IBOutlet UILabel* suggesterLabel;

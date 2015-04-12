@@ -14,6 +14,8 @@
 @property (nonatomic, weak) IBOutlet UILabel* artistLabel;
 @property (nonatomic, weak) IBOutlet UILabel* voteNumber;
 @property (nonatomic, weak) IBOutlet UIImageView* songArtwork;
+@property (nonatomic, weak) IBOutlet UIImageView* voteIcon;
 @property (nonatomic, weak) IBOutlet UIButton* voteButton;
+@property (assign) BOOL isUpvoted;
 
 @end
