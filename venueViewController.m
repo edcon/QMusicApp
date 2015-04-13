@@ -23,30 +23,37 @@ Venue *venue;
 @implementation venueViewController
 
 {
+
     NSArray *venu;
 }
 
 
 
+//@synthesize tableView;
 
 - (void)viewDidLoad {
-    [self configureRestKit];
-    [self loadVenues];
+NSLog(@"\nBeginning of viewDidLoad: %@\n", venu[0]);
+
     [super viewDidLoad];
     
-    
+    [self configureRestKit];
+   // [NSThread sleepForTimeInterval:2.0f];
+    [self loadVenues];
     
     // Do any additional setup after loading the view.
 }
 
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
     return 1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{NSLog(@"\nBeginning of cellForRowAtIndexPath: %@\n", venu[0]);
     static NSString *simpleTableIdentifier = @"SimpleTableCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
@@ -56,6 +63,7 @@ Venue *venue;
     }
     
     cell.textLabel.text = [venu objectAtIndex:indexPath.row];
+    //[self.venueTableView reloadData];
     return cell;
 }
 
@@ -67,7 +75,8 @@ Venue *venue;
 
 
 - (void)configureRestKit
-{
+{  NSLog(@"\nBeginning of ConfigureRestkit: %@\n", venu[0]);
+
     // [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/json"];
     // initialize AFNetworking HTTPClient
     NSURL *baseURL = [NSURL URLWithString:@"http://q-music.herokuapp.com/"];
@@ -93,10 +102,12 @@ Venue *venue;
 
 - (void)loadVenues
 {
-    NSString *lat = @"40.025218";
+    NSLog(@"\nBeginning of LOADVENUES%@\n", venu[0]);
+
+    /*NSString *lat = @"40.025218";
     NSString *lon = @"-75.323726";
     
-    /*NSDictionary *queryParams = @{@"Latitude" : lat,
+    NSDictionary *queryParams = @{@"Latitude" : lat,
      @"Longitude" : lon,
      };*/
     
@@ -106,12 +117,14 @@ Venue *venue;
                                                   _venues = mappingResult.array;
                                                   venu = [_venues valueForKey:@"name"];
                                                   NSLog(@"\nNAME OF VENUE8888: %@\n", venu[0]);
-                                                  
-                                                  
+                                                //  [self.venueTableView reloadData];
                                               }
                                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                   NSLog(@"What do you mean by 'there is no coffee?': %@", error);
                                               }];
+    //[self.venueTableView reloadData];
+    [NSThread sleepForTimeInterval:0.7f];
+    NSLog(@"\n\nEND of LOADVENUES%@\n\n", venu[0]);
 
 }
 

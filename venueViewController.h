@@ -10,5 +10,5 @@
 
 @interface venueViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-
+//@property (strong, nonatomic) IBOutlet UITableView *venueTableView;
 @end
