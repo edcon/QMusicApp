@@ -25,30 +25,46 @@ Venue *venue;
 {
 
     NSArray *venu;
+
+
 }
 
 
-
+@synthesize lon;
+@synthesize lat;
 //@synthesize tableView;
 
 - (void)viewDidLoad {
 NSLog(@"\nBeginning of viewDidLoad: %@\n", venu[0]);
 
-    [super viewDidLoad];
     
-    [self configureRestKit];
-   // [NSThread sleepForTimeInterval:2.0f];
-    [self loadVenues];
+
+    
+    [self configureRestKit:lat longitdue:lon];
+    // [NSThread sleepForTimeInterval:2.0f];
+    [self loadVenues:lat longitdue:lon];
+    //     [NSThread sleepForTimeInterval:5.0f];
+    [super viewDidLoad];
+
     
     // Do any additional setup after loading the view.
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+//*****************************************************************************************************\\
+//****************************************  TABLE VIEW  ***********************************************\\
+//*****************************************************************************************************\\
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
-    return 1;
+    return venu.count;
 }
 
 
@@ -68,13 +84,14 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
-- (void)configureRestKit
+//*****************************************************************************************************\\
+//*******************************************  RESTKIT  ***********************************************\\
+//*****************************************************************************************************\\
+ 
+ 
+- (void)configureRestKit:(NSString *)latitudeC longitdue:(NSString *)longitudeC
 {  NSLog(@"\nBeginning of ConfigureRestkit: %@\n", venu[0]);
 
     // [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/json"];
@@ -89,29 +106,32 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
     RKObjectMapping *venueMapping = [RKObjectMapping mappingForClass:[Venue class]];
     [venueMapping addAttributeMappingsFromArray:@[@"name"]];
     
+    //NSLog(@"/n Latitude: %.8f, Longitude: %.8f",40.02302400,-75.31517700);
+    NSLog(@"/n Lat: %@, Lon: %@",lat,lon);
+
+    
+    NSString *combined = [NSString stringWithFormat:@"nearby/40.02302400/75.31517700"];
+    
     // register mappings with the provider using a response descriptor
     RKResponseDescriptor *responseDescriptor =
     [RKResponseDescriptor responseDescriptorWithMapping:venueMapping
                                                  method:RKRequestMethodGET
-                                            pathPattern:@"nearby/40.025218/-75.323726"
-                                                keyPath:@"obj"
+                                            pathPattern:combined                                                keyPath:@"obj"
                                             statusCodes:[NSIndexSet indexSetWithIndex:200]];
     
     [objectManager addResponseDescriptor:responseDescriptor];
 }
 
-- (void)loadVenues
+- (void)loadVenues:(NSString *)latitudeV longitdue:(NSString *)longitudeV
 {
-    NSLog(@"\nBeginning of LOADVENUES%@\n", venu[0]);
+   // NSLog(@"\nBeginning of LOADVENUES%@\n", venu[0]);
 
-    /*NSString *lat = @"40.025218";
-    NSString *lon = @"-75.323726";
+
+//    NSString *combined = [NSString stringWithFormat:@"nearby/%@/%@", latitudeV, longitudeV];
+    NSString *combined = [NSString stringWithFormat:@"nearby/40.02302400/75.31517700"];
+
     
-    NSDictionary *queryParams = @{@"Latitude" : lat,
-     @"Longitude" : lon,
-     };*/
-    
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"nearby/40.025218/-75.323726"
+    [[RKObjectManager sharedManager] getObjectsAtPath:combined
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   _venues = mappingResult.array;
@@ -127,6 +147,10 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
     NSLog(@"\n\nEND of LOADVENUES%@\n\n", venu[0]);
 
 }
+
+
+
+
 
 /*
 #pragma mark - Navigation

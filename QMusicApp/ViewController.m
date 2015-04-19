@@ -10,6 +10,8 @@
 #import "TheQueCell.h"
 #import <RestKit/RestKit.h>
 #import "Venue.h"
+#import "venueViewController.h"
+
 
 NSArray *venu;
 
@@ -25,10 +27,11 @@ NSArray *songNames;
 NSArray *artistNames;
 NSArray *numberVotes;
 NSArray *songImages;
-
 NSString *voteUp;
-
 NSNumber *upVote;
+
+CLLocation *crnLoc;
+
 
 @synthesize tableView;
 @synthesize venueButton;
@@ -39,13 +42,41 @@ NSNumber *upVote;
 @synthesize voteButton;
 @synthesize songProgress;
 
+@synthesize locationManager;
+@synthesize lat;
+@synthesize lon;
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
+    
+    
+    //GET LOCATION
+    
+    locationManager = [[CLLocationManager alloc]init]; // initializing locationManager
+    
+    locationManager.delegate = self; // set the delegate of locationManager to self.
+    
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest; // setting the accuracy
+    
+    // Check for iOS 8 to prevent errors in iOs 7
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
+    
+    [locationManager startUpdatingLocation];  //requesting location updates
+    
+
+    
 
     [self.tableView reloadData];
   
+    
     
     //Handle venue information and current playing song info
     [venueButton setTitle:@"Kelly's Taproom" forState:UIControlStateNormal];
@@ -70,11 +101,10 @@ NSNumber *upVote;
     artistNames = [NSArray arrayWithObjects:@"OutKast",@"Kendrick Lamar",@"Major Lazer",@"Arctic Monkeys", @"Modest Mouse", @"Foo Fighters", @"Led Zeppelin", @"Lady Gaga", @"ACDC", @"Rick Ross", nil];
     numberVotes = [NSArray arrayWithObjects: @"17",@"1",@"12",@"9", @"7", @"7", @"4", @"4", @"2", @"15",  nil];
     songImages = [NSArray arrayWithObjects:@"OutkastHeyYa@2x.png",@"KendrickGKMC@2x.png",@"majorlazer@2x.png",@"Fluorescent_Adolescent@2x.png", @"goodnews@2x.png", @"timeslikethese@2x.png", @"Wllsingle@2x.png", @"LadyGaGaBadRomance@2x.png", @"tnt@2x.png", @"ricky@2x.png", nil];
-    
-    
- 
+
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -150,5 +180,51 @@ NSNumber *upVote;
     return 64;
 }
 
+//*****************************************************************************************************\\
+//*******************************************  LOCATION  **********************************************\\
+//*****************************************************************************************************\\
+
+//When location is updated log location
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+
+{
+    NSLog(@"%@", [locations lastObject]); //Log Location
+    crnLoc = [locations lastObject];
+  
+    
+    [locationManager stopUpdatingLocation];  //stop requesting location updates
+    
+    
+ 
+    
+}
+
+// Deal with errors retrieving location
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    
+    UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [errorAlert show];
+    NSLog(@"Error: %@",error.description);
+    
+}
+
+
+//*****************************************************************************************************\\
+//*****************************************************************************************************\\
+//*****************************************************************************************************\\
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"showVenuesSegue"]){
+        NSString *latitude, *longitude;
+        latitude = [NSString stringWithFormat:@"%.8f",crnLoc.coordinate.latitude];
+        longitude = [NSString stringWithFormat:@"%.8f",crnLoc.coordinate.longitude];
+        NSLog(@"\n\n LATITUDE: %@, LONGITUDE: %@\n\n",latitude,longitude);
+
+        venueViewController *controller = (venueViewController *)segue.destinationViewController;
+        controller.lat =latitude ;
+        controller.lon = longitude;
+    }
+}
 
 @end

@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <CLLocationManagerDelegate>
+
+
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton* venueButton;
@@ -19,6 +22,9 @@
 @property (nonatomic, weak) IBOutlet UIButton* voteButton;
 @property (nonatomic, strong) IBOutlet UISlider* songProgress;
 
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (nonatomic) NSString *lat;
+@property (nonatomic) NSString *lon;
 
 @end
 

@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface venueViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic) NSString *lat;
+@property (nonatomic) NSString *lon;
+
 
 //@property (strong, nonatomic) IBOutlet UITableView *venueTableView;
 @end
