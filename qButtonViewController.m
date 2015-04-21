@@ -8,22 +8,49 @@
 
 #import "qButtonViewController.h"
 #import "TheQueCell.h"
+#import "Song.h"
+
 @interface qButtonViewController ()
 
 @end
 
 @implementation qButtonViewController
+
+
+{
+    NSArray *songs;
+    NSArray *searchResults;
+    
+    
 NSArray *songNames;
 NSArray *artistNames;
 NSArray *numberVotes;
 NSArray *songImages;
 NSString *voteUp;
 NSNumber *upVote;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    Song *song1 = [Song new];
+    song1.name = @"Pursuit of Happiness";
+    song1.artist = @"Kid Cudi";
+    song1.image = @"poh.jpg";
+    
+    Song *song2 = [Song new];
+    song2.name = @"Alive";
+    song2.artist = @"Kid Cudi";
+    song2.image = @"poh.jpg";
+    
+    Song *song3 = [Song new];
+    song3.name = @"Say My Name";
+    song3.artist = @"ODESZA";
+    song3.image = @"smn.jpg";
  
-        
+    songs = [NSArray arrayWithObjects:song1,song2,song3, nil];
+    
+
         songNames = [NSArray arrayWithObjects:@"Hey Ya",@"Money Trees",@"Come On To Me",@"Flourescent Adolescent", @"Float On", @"Times Like These", @"Whole Lotta Love", @"Bad Romance", @"TNT", @"Here I Am", nil];
     artistNames = [NSArray arrayWithObjects:@"OutKast",@"Kendrick Lamar",@"Major Lazer",@"Arctic Monkeys", @"Modest Mouse", @"Foo Fighters", @"Led Zeppelin", @"Lady Gaga", @"ACDC", @"Rick Ross", nil];
     numberVotes = [NSArray arrayWithObjects: @"17",@"1",@"12",@"9", @"7", @"7", @"4", @"4", @"2", @"15",  nil];
@@ -34,8 +61,13 @@ NSNumber *upVote;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [searchResults count];
+        
+    } else {
+        return [songs count];
+    }
     
-    return 10;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -54,11 +86,21 @@ NSNumber *upVote;
     //Venue *venueName = venu[indexPath.row];
     //NSLog(@"\nNAME OF VENUE2: %@\n", venu[0]);
     
-    cell.nameLabel.text = [songNames objectAtIndex:indexPath.row];
-    cell.artistLabel.text = [artistNames objectAtIndex:indexPath.row];
-    cell.voteNumber.text = [numberVotes objectAtIndex:indexPath.row];
-    cell.songArtwork.image = [UIImage imageNamed:[songImages objectAtIndex:indexPath.row]];
-      cell.voteIcon.hidden = YES;
+ 
+    
+    Song *song = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        song = [searchResults objectAtIndex:indexPath.row];
+    } else {
+        song = [songs objectAtIndex:indexPath.row];
+    }
+    
+    
+    cell.nameLabel.text = song.name;//[songNames objectAtIndex:indexPath.row];
+    cell.artistLabel.text = song.artist;//[artistNames objectAtIndex:indexPath.row];
+    //cell.voteNumber.text = [numberVotes objectAtIndex:indexPath.row];
+    cell.songArtwork.image = [UIImage imageNamed:song.image];
+    cell.voteIcon.hidden = YES;
     cell.voteNumber.hidden = YES;
     return cell;
 }
@@ -103,6 +145,21 @@ NSNumber *upVote;
     return 64;
 }
 
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
+    searchResults = [songs filteredArrayUsingPredicate:resultPredicate];
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

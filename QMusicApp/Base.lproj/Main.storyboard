@@ -225,37 +225,49 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="QcJ-eR-v91">
                                 <rect key="frame" x="0.0" y="64" width="495" height="575"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <searchBar key="tableFooterView" contentMode="redraw" id="e6D-xL-Ghy">
-                                    <rect key="frame" x="0.0" y="0.0" width="495" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="rQD-Cn-tya" id="Qbu-gB-1kU"/>
-                                    </connections>
-                                </searchBar>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="536"/>
+                                    <rect key="frame" x="0.0" y="108" width="400" height="536"/>
                                 </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="rQD-Cn-tya" id="Ula-jh-9hp"/>
                                     <outlet property="delegate" destination="rQD-Cn-tya" id="c3z-eR-TMx"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="uae-F3-gTa">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="64" width="365" height="44"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="rQD-Cn-tya" id="DdG-UJ-V7A"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="uae-F3-gTa"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="uae-F3-gTa"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="searchDisplayController" destination="pGA-vB-jXP" id="fKS-J9-Sxn"/>
+                        <outlet property="searchDisplayController" destination="lbo-Ol-U6Z" id="Guq-ns-k7a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ssA-mZ-592" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="pGA-vB-jXP">
+                <searchDisplayController id="lbo-Ol-U6Z">
                     <connections>
-                        <outlet property="delegate" destination="rQD-Cn-tya" id="jBh-Fo-eIb"/>
-                        <outlet property="searchBar" destination="e6D-xL-Ghy" id="4z0-Qq-8xv"/>
-                        <outlet property="searchContentsController" destination="rQD-Cn-tya" id="VKh-fy-kY8"/>
-                        <outlet property="searchResultsDataSource" destination="rQD-Cn-tya" id="eoX-wD-XFL"/>
-                        <outlet property="searchResultsDelegate" destination="rQD-Cn-tya" id="FOc-9G-SsQ"/>
+                        <outlet property="delegate" destination="rQD-Cn-tya" id="psG-MX-fgu"/>
+                        <outlet property="searchBar" destination="uae-F3-gTa" id="Obi-jQ-N6R"/>
+                        <outlet property="searchContentsController" destination="rQD-Cn-tya" id="RFp-2k-hDw"/>
+                        <outlet property="searchResultsDataSource" destination="rQD-Cn-tya" id="NId-tb-gL9"/>
+                        <outlet property="searchResultsDelegate" destination="rQD-Cn-tya" id="Kkh-w1-YtI"/>
                     </connections>
                 </searchDisplayController>
             </objects>

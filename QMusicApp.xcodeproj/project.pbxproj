@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5E52F8361AD370300034B463 /* qButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E52F8351AD370300034B463 /* qButtonViewController.m */; };
 		5E52F8391AD3710E0034B463 /* venueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E52F8381AD3710E0034B463 /* venueViewController.m */; };
+		5E82E25C1AE5BE3B00801B86 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E82E25B1AE5BE3B00801B86 /* Song.m */; };
+		5E82E25E1AE5C68A00801B86 /* poh.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E82E25D1AE5C68A00801B86 /* poh.jpg */; };
+		5E82E2601AE5CAC900801B86 /* smn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E82E25F1AE5CAC900801B86 /* smn.jpg */; };
 		5ECE08EE1AD387490054E7F5 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE08ED1AD387490054E7F5 /* Venue.m */; };
 		7B6A916B1A88707B001CE5D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A916A1A88707B001CE5D9 /* main.m */; };
 		7B6A916E1A88707B001CE5D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A916D1A88707B001CE5D9 /* AppDelegate.m */; };
@@ -56,10 +59,13 @@
 		5E52F8351AD370300034B463 /* qButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = qButtonViewController.m; path = ../qButtonViewController.m; sourceTree = "<group>"; };
 		5E52F8371AD3710E0034B463 /* venueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = venueViewController.h; path = ../venueViewController.h; sourceTree = "<group>"; };
 		5E52F8381AD3710E0034B463 /* venueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = venueViewController.m; path = ../venueViewController.m; sourceTree = "<group>"; };
+		5E82E25A1AE5BE3B00801B86 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = SOURCE_ROOT; };
+		5E82E25B1AE5BE3B00801B86 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = SOURCE_ROOT; };
+		5E82E25D1AE5C68A00801B86 /* poh.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poh.jpg; sourceTree = "<group>"; };
+		5E82E25F1AE5CAC900801B86 /* smn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smn.jpg; sourceTree = "<group>"; };
 		5ECE08EC1AD387490054E7F5 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Venue.h; path = ../Venue.h; sourceTree = "<group>"; };
 		5ECE08ED1AD387490054E7F5 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Venue.m; path = ../Venue.m; sourceTree = "<group>"; };
 		7A5EB608556E7CED30FD1C0A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		7B26219D1AAE31F700AA1F06 /* newblue2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = newblue2.png; path = ../../../Desktop/newblue2.png; sourceTree = "<group>"; };
 		7B6A91651A88707B001CE5D9 /* QMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6A91691A88707B001CE5D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B6A916A1A88707B001CE5D9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -128,11 +134,12 @@
 		7B5855421A8898C80066063C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5E82E25F1AE5CAC900801B86 /* smn.jpg */,
+				5E82E25D1AE5C68A00801B86 /* poh.jpg */,
 				7B6F9DD61A8FEBD70027AD19 /* Wllsingle@2x.png */,
 				7BC5BE661A8AC69B00201DF9 /* venue_select_icon_@2x.png */,
 				7B6F9DD81A8FED6F0027AD19 /* ricky@2x.png */,
 				7BC5BE681A8AC69B00201DF9 /* goodnews@2x.png */,
-				7B26219D1AAE31F700AA1F06 /* newblue2.png */,
 				7BC5BE691A8AC69B00201DF9 /* hellofanight@2x.png */,
 				7BC5BE891A8AE3CA00201DF9 /* scrivz@2x.png */,
 				7B6F9DDA1A8FED720027AD19 /* LadyGaGaBadRomance@2x.png */,
@@ -180,6 +187,8 @@
 				5E52F8381AD3710E0034B463 /* venueViewController.m */,
 				5E52F8341AD3702F0034B463 /* qButtonViewController.h */,
 				5E52F8351AD370300034B463 /* qButtonViewController.m */,
+				5E82E25A1AE5BE3B00801B86 /* Song.h */,
+				5E82E25B1AE5BE3B00801B86 /* Song.m */,
 				7B5855421A8898C80066063C /* images */,
 				7B6A916C1A88707B001CE5D9 /* AppDelegate.h */,
 				7B6A916D1A88707B001CE5D9 /* AppDelegate.m */,
@@ -325,6 +334,8 @@
 				7BC5BE7D1A8AC69B00201DF9 /* Fluorescent_Adolescent@2x.png in Resources */,
 				7BC5BE881A8ADDAB00201DF9 /* arrow@2x.png in Resources */,
 				7BC5BE7A1A8AC69B00201DF9 /* timeslikethese@2x.png in Resources */,
+				5E82E2601AE5CAC900801B86 /* smn.jpg in Resources */,
+				5E82E25E1AE5C68A00801B86 /* poh.jpg in Resources */,
 				7BC5BE751A8AC69B00201DF9 /* goodnews@2x.png in Resources */,
 				7BC5BE791A8AC69B00201DF9 /* KendrickGKMC@2x.png in Resources */,
 				7BC5BE761A8AC69B00201DF9 /* hellofanight@2x.png in Resources */,
@@ -385,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E82E25C1AE5BE3B00801B86 /* Song.m in Sources */,
 				7B6A91711A88707B001CE5D9 /* ViewController.m in Sources */,
 				7B6A916E1A88707B001CE5D9 /* AppDelegate.m in Sources */,
 				5ECE08EE1AD387490054E7F5 /* Venue.m in Sources */,
