@@ -12,6 +12,10 @@
 		5E82E25C1AE5BE3B00801B86 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E82E25B1AE5BE3B00801B86 /* Song.m */; };
 		5E82E25E1AE5C68A00801B86 /* poh.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E82E25D1AE5C68A00801B86 /* poh.jpg */; };
 		5E82E2601AE5CAC900801B86 /* smn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E82E25F1AE5CAC900801B86 /* smn.jpg */; };
+		5E82E2621AE633B900801B86 /* ratatat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E82E2611AE633B700801B86 /* ratatat.jpg */; };
+		5E82E2641AE633C100801B86 /* kygo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E82E2631AE633C100801B86 /* kygo.jpg */; };
+		5E82E2661AE633C700801B86 /* hwr.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5E82E2651AE633C700801B86 /* hwr.jpg */; };
+		5E82E2681AE633D500801B86 /* adventure.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E82E2671AE633D500801B86 /* adventure.png */; };
 		5ECE08EE1AD387490054E7F5 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE08ED1AD387490054E7F5 /* Venue.m */; };
 		7B6A916B1A88707B001CE5D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A916A1A88707B001CE5D9 /* main.m */; };
 		7B6A916E1A88707B001CE5D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A916D1A88707B001CE5D9 /* AppDelegate.m */; };
@@ -63,6 +67,10 @@
 		5E82E25B1AE5BE3B00801B86 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = SOURCE_ROOT; };
 		5E82E25D1AE5C68A00801B86 /* poh.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = poh.jpg; sourceTree = "<group>"; };
 		5E82E25F1AE5CAC900801B86 /* smn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = smn.jpg; sourceTree = "<group>"; };
+		5E82E2611AE633B700801B86 /* ratatat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ratatat.jpg; sourceTree = "<group>"; };
+		5E82E2631AE633C100801B86 /* kygo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kygo.jpg; sourceTree = "<group>"; };
+		5E82E2651AE633C700801B86 /* hwr.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hwr.jpg; sourceTree = "<group>"; };
+		5E82E2671AE633D500801B86 /* adventure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adventure.png; sourceTree = "<group>"; };
 		5ECE08EC1AD387490054E7F5 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Venue.h; path = ../Venue.h; sourceTree = "<group>"; };
 		5ECE08ED1AD387490054E7F5 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Venue.m; path = ../Venue.m; sourceTree = "<group>"; };
 		7A5EB608556E7CED30FD1C0A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +142,10 @@
 		7B5855421A8898C80066063C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5E82E2671AE633D500801B86 /* adventure.png */,
+				5E82E2651AE633C700801B86 /* hwr.jpg */,
+				5E82E2631AE633C100801B86 /* kygo.jpg */,
+				5E82E2611AE633B700801B86 /* ratatat.jpg */,
 				5E82E25F1AE5CAC900801B86 /* smn.jpg */,
 				5E82E25D1AE5C68A00801B86 /* poh.jpg */,
 				7B6F9DD61A8FEBD70027AD19 /* Wllsingle@2x.png */,
@@ -328,16 +340,20 @@
 				7B6A91741A88707B001CE5D9 /* Main.storyboard in Resources */,
 				7BC5BE7C1A8AC69B00201DF9 /* majorlazer@2x.png in Resources */,
 				7B6A91791A88707B001CE5D9 /* LaunchScreen.xib in Resources */,
+				5E82E2681AE633D500801B86 /* adventure.png in Resources */,
 				7BC5BE771A8AC69B00201DF9 /* current_view_bg@2x.png in Resources */,
+				5E82E2621AE633B900801B86 /* ratatat.jpg in Resources */,
 				7B6F9DDD1A8FED770027AD19 /* tnt@2x.png in Resources */,
 				7B6F9DD91A8FED6F0027AD19 /* ricky@2x.png in Resources */,
 				7BC5BE7D1A8AC69B00201DF9 /* Fluorescent_Adolescent@2x.png in Resources */,
+				5E82E2641AE633C100801B86 /* kygo.jpg in Resources */,
 				7BC5BE881A8ADDAB00201DF9 /* arrow@2x.png in Resources */,
 				7BC5BE7A1A8AC69B00201DF9 /* timeslikethese@2x.png in Resources */,
 				5E82E2601AE5CAC900801B86 /* smn.jpg in Resources */,
 				5E82E25E1AE5C68A00801B86 /* poh.jpg in Resources */,
 				7BC5BE751A8AC69B00201DF9 /* goodnews@2x.png in Resources */,
 				7BC5BE791A8AC69B00201DF9 /* KendrickGKMC@2x.png in Resources */,
+				5E82E2661AE633C700801B86 /* hwr.jpg in Resources */,
 				7BC5BE761A8AC69B00201DF9 /* hellofanight@2x.png in Resources */,
 				7B6F9DD71A8FEBD70027AD19 /* Wllsingle@2x.png in Resources */,
 				7BBB004D1A9000D900BA4F0F /* arrowgreen@2x.png in Resources */,

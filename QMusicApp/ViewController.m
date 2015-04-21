@@ -11,7 +11,7 @@
 #import <RestKit/RestKit.h>
 #import "Venue.h"
 #import "venueViewController.h"
-
+#import "Song.h"
 
 NSArray *venu;
 
@@ -22,7 +22,7 @@ NSArray *venu;
 @end
 
 @implementation ViewController
-
+bool newCell = FALSE;
 NSArray *songNames;
 NSArray *artistNames;
 NSArray *numberVotes;
@@ -45,6 +45,10 @@ CLLocation *crnLoc;
 @synthesize locationManager;
 @synthesize lat;
 @synthesize lon;
+
+@synthesize display;
+@synthesize detail;
+@synthesize songImage;
 
 
 
@@ -105,6 +109,26 @@ CLLocation *crnLoc;
     
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self updateView];
+}
+
+- (void)updateView
+{
+    NSIndexPath *path1 = [NSIndexPath indexPathForRow:0 inSection:0];
+    NSIndexPath *path2 = [NSIndexPath indexPathForRow:1 inSection:0];
+    
+    NSArray *indexArray = [NSArray arrayWithObjects:path1,path2,nil];
+    newCell = TRUE;
+    [tableView beginUpdates];
+    
+    [tableView insertRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationBottom];
+    
+    [tableView endUpdates];
+
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -119,12 +143,13 @@ CLLocation *crnLoc;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-   
+    
     static NSString *simpleTableIdentifier = @"TheQueCell";
 
     TheQueCell *cell = (TheQueCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     //TheQueCell *cell = (TheQueCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
+    
     if (cell == nil)
     {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TheQueCell" owner:self options:nil];
@@ -132,18 +157,33 @@ CLLocation *crnLoc;
     }
     //Venue *venueName = venu[indexPath.row];
     //NSLog(@"\nNAME OF VENUE2: %@\n", venu[0]);
-
+if(newCell == FALSE){
     cell.nameLabel.text = [songNames objectAtIndex:indexPath.row];
     cell.artistLabel.text = [artistNames objectAtIndex:indexPath.row];
     cell.voteNumber.text = [numberVotes objectAtIndex:indexPath.row];
     cell.songArtwork.image = [UIImage imageNamed:[songImages objectAtIndex:indexPath.row]];
-    
     return cell;
+    }else{
+        NSLog(@"name: %@", display);
+        NSLog(@"artist: %@", detail);
+
+        cell.nameLabel.text = display;
+        cell.artistLabel.text = detail;
+        cell.voteNumber.text = @"1";
+        cell.songArtwork.image = [UIImage imageNamed:songImage];
+        cell.voteIcon.image = [UIImage imageNamed:@"arrowgreen@2x.png"];
+        cell.isUpvoted = TRUE;
+        newCell = FALSE;
+return cell;
+    }
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 {
+    
+    
     static NSString *simpleTableIdentifier = @"TheQueCell";
     TheQueCell *cell = (TheQueCell *)[tableView cellForRowAtIndexPath:indexPath];
 

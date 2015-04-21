@@ -26,5 +26,11 @@
 @property (nonatomic) NSString *lat;
 @property (nonatomic) NSString *lon;
 
+
+@property (nonatomic, strong) NSString *display; // name of song
+@property (nonatomic, strong) NSString *detail; // artist name
+@property (nonatomic, strong) NSString *songImage;
+@property (nonatomic) bool newCell;
+
 @end
 

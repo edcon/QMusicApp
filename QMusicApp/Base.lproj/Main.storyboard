@@ -213,7 +213,7 @@
                                     <navigationItem title="Add a Song" id="Wbz-NL-Lg9">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="aVf-5R-4W8">
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="show" id="i3e-sI-gco"/>
+                                                <segue destination="BYZ-38-t0r" kind="show" identifier="songSelected" id="i3e-sI-gco"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -237,7 +237,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="64" width="365" height="44"/>
+                                    <rect key="frame" x="0.0" y="64" width="372" height="44"/>
                                 </variation>
                                 <connections>
                                     <outlet property="delegate" destination="rQD-Cn-tya" id="DdG-UJ-V7A"/>
@@ -258,6 +258,7 @@
                     </view>
                     <connections>
                         <outlet property="searchDisplayController" destination="lbo-Ol-U6Z" id="Guq-ns-k7a"/>
+                        <segue destination="BYZ-38-t0r" kind="show" id="4EC-bv-QcE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ssA-mZ-592" userLabel="First Responder" sceneMemberID="firstResponder"/>

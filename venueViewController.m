@@ -110,7 +110,7 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
     NSLog(@"/n Lat: %@, Lon: %@",lat,lon);
 
     
-    NSString *combined = [NSString stringWithFormat:@"nearby/40.02302400/75.31517700"];
+    NSString *combined = [NSString stringWithFormat:@"nearby/-40.02302400/75.31517700"];
     
     // register mappings with the provider using a response descriptor
     RKResponseDescriptor *responseDescriptor =
@@ -128,7 +128,7 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
 
 
 //    NSString *combined = [NSString stringWithFormat:@"nearby/%@/%@", latitudeV, longitudeV];
-    NSString *combined = [NSString stringWithFormat:@"nearby/40.02302400/75.31517700"];
+    NSString *combined = [NSString stringWithFormat:@"nearby/-40.02302400/75.31517700"];
 
     
     [[RKObjectManager sharedManager] getObjectsAtPath:combined
