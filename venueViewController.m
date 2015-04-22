@@ -10,6 +10,7 @@
 #import "Venue.h"
 #import <RestKit/RestKit.h>
 #import "TheQueCell.h"
+#import "ViewController.h"
 
 
 Venue *venue;
@@ -23,7 +24,7 @@ Venue *venue;
 @implementation venueViewController
 
 {
-
+    Venue *venueSel;
     NSArray *venu;
 
 
@@ -84,6 +85,18 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
 }
 
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    
+    venueSel = [_venues objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier: @"venueSelected" sender: self];
+    
+     //   UIAlertView *messageAlert = [[UIAlertView alloc] initWithTitle:@"Venue Selected" message:@"You've selected a venue" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    //    [messageAlert show];
+}
 
 
 //*****************************************************************************************************\\
@@ -155,13 +168,18 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
 
 /*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
 */
+ -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+ if([segue.identifier isEqualToString:@"venueSelected"]){
+     NSString *venueSelected;
+ 
+     ViewController *vController = (ViewController *)segue.destinationViewController;
+     venueSelected = [venueSel valueForKey:@"name"];
+     vController.venueName =venueSelected;
+    
+ }
+ 
 
+ }
 
 @end

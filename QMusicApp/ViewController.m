@@ -50,6 +50,7 @@ CLLocation *crnLoc;
 @synthesize detail;
 @synthesize songImage;
 
+@synthesize venueName;
 
 
 
@@ -81,9 +82,11 @@ CLLocation *crnLoc;
     [self.tableView reloadData];
   
     
-    
+    if(venueName == nil){
+        venueName = @"Venue";
+    }
     //Handle venue information and current playing song info
-    [venueButton setTitle:@"Kelly's Taproom" forState:UIControlStateNormal];
+    [venueButton setTitle:venueName forState:UIControlStateNormal];
     currentSongLabel.text = @"Hell of a Night";
     currentArtistLabel.text = @"Schoolboy Q";
     suggesterLabel.text = @"JohnDoe6";

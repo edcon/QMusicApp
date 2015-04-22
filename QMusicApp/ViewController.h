@@ -32,5 +32,8 @@
 @property (nonatomic, strong) NSString *songImage;
 @property (nonatomic) bool newCell;
 
+
+@property (nonatomic, strong) NSString *venueName;
+
 @end
 
