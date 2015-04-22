@@ -129,7 +129,7 @@
                                             <color key="titleShadowColor" red="0.23756615079579618" green="0.33529228826761681" blue="0.5076542357607734" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Fq8-vP-aSX" kind="show" identifier="shoeVenuesSegue" id="FAZ-an-DpN"/>
+                                            <segue destination="Fq8-vP-aSX" kind="show" identifier="showVenuesSegue" id="FAZ-an-DpN"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jvg-E5-64L">

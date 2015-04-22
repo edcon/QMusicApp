@@ -118,9 +118,9 @@ CLLocation *crnLoc;
 {
     NSIndexPath *path1 = [NSIndexPath indexPathForRow:0 inSection:0];
     NSIndexPath *path2 = [NSIndexPath indexPathForRow:1 inSection:0];
-    
-    NSArray *indexArray = [NSArray arrayWithObjects:path1,path2,nil];
-    newCell = TRUE;
+    NSIndexPath *path3 = [NSIndexPath indexPathForRow:2 inSection:0];
+
+    NSArray *indexArray = [NSArray arrayWithObjects:path1,path2, path3, nil];
     [tableView beginUpdates];
     
     [tableView insertRowsAtIndexPaths:indexArray withRowAnimation:UITableViewRowAnimationBottom];

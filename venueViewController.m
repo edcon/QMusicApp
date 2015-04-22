@@ -35,7 +35,7 @@ Venue *venue;
 //@synthesize tableView;
 
 - (void)viewDidLoad {
-NSLog(@"\nBeginning of viewDidLoad: %@\n", venu[0]);
+NSLog(@"\n\n\nBeginning of viewDidLoad lat: %@, lon: %@\n\n\n", lat,lon);
 
     
 
@@ -107,10 +107,11 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
     [venueMapping addAttributeMappingsFromArray:@[@"name"]];
     
     //NSLog(@"/n Latitude: %.8f, Longitude: %.8f",40.02302400,-75.31517700);
-    NSLog(@"/n Lat: %@, Lon: %@",lat,lon);
+    //NSLog(@"/n Lat: %@, Lon: %@",lat,lon);
 
-    
-    NSString *combined = [NSString stringWithFormat:@"nearby/-40.02302400/75.31517700"];
+    NSString *combined = [NSString stringWithFormat:@"nearby/%@/%@", latitudeC, longitudeC];
+
+    //NSString *combined = [NSString stringWithFormat:@"nearby/-40.02302400/75.31517700"];
     
     // register mappings with the provider using a response descriptor
     RKResponseDescriptor *responseDescriptor =
@@ -127,9 +128,9 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
    // NSLog(@"\nBeginning of LOADVENUES%@\n", venu[0]);
 
 
-//    NSString *combined = [NSString stringWithFormat:@"nearby/%@/%@", latitudeV, longitudeV];
-    NSString *combined = [NSString stringWithFormat:@"nearby/-40.02302400/75.31517700"];
-
+  NSString *combined = [NSString stringWithFormat:@"nearby/%@/%@", latitudeV, longitudeV];
+//    NSString *combined = [NSString stringWithFormat:@"nearby/-40.02302400/75.31517700"];
+    NSLog(@"Combined lat and long in LOADVENUES \n %@  \n",combined);
     
     [[RKObjectManager sharedManager] getObjectsAtPath:combined
                                            parameters:nil
