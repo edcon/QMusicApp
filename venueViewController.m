@@ -18,6 +18,7 @@ Venue *venue;
 @interface venueViewController ()
 
 @property (nonatomic, strong) NSArray *venues;
+@property RKObjectManager *venueManager;
 
 @end
 
@@ -43,7 +44,7 @@ NSLog(@"\n\n\nBeginning of viewDidLoad lat: %@, lon: %@\n\n\n", lat,lon);
     
     [self configureRestKit:lat longitdue:lon];
     // [NSThread sleepForTimeInterval:2.0f];
-    [self loadVenues:lat longitdue:lon];
+   [self loadVenues:lat longitdue:lon];
     //     [NSThread sleepForTimeInterval:5.0f];
     [super viewDidLoad];
 
@@ -107,24 +108,29 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
 - (void)configureRestKit:(NSString *)latitudeC longitdue:(NSString *)longitudeC
 {  NSLog(@"\nBeginning of ConfigureRestkit: %@\n", venu[0]);
 
-    // [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/json"];
+    [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/html"];
+    
     // initialize AFNetworking HTTPClient
-    NSURL *baseURL = [NSURL URLWithString:@"http://q-music.herokuapp.com/"];
+    NSURL *baseURL = [NSURL URLWithString:@"http://q-music.herokuapp.com"];
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     
     // initialize RestKit
-    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+    self.venueManager = [[RKObjectManager alloc] initWithHTTPClient:client];
     
     // setup object mappings
     RKObjectMapping *venueMapping = [RKObjectMapping mappingForClass:[Venue class]];
-    [venueMapping addAttributeMappingsFromArray:@[@"name"]];
+    [venueMapping addAttributeMappingsFromDictionary:@{
+                                                       @"name": @"name",
+                                                       @"id": @"venueId",
+                                                       }];
     
-    //NSLog(@"/n Latitude: %.8f, Longitude: %.8f",40.02302400,-75.31517700);
-    //NSLog(@"/n Lat: %@, Lon: %@",lat,lon);
+    /*// setup object mappings
+    RKObjectMapping *venueMapping = [RKObjectMapping mappingForClass:[Venue class]];
+    [venueMapping addAttributeMappingsFromArray:@[@"name"]];
+    */
+    
 
-    NSString *combined = [NSString stringWithFormat:@"nearby/%@/%@", latitudeC, longitudeC];
-
-    //NSString *combined = [NSString stringWithFormat:@"nearby/-40.02302400/75.31517700"];
+    NSString *combined = [NSString stringWithFormat:@"/nearby/%@/%@", latitudeC, longitudeC];
     
     // register mappings with the provider using a response descriptor
     RKResponseDescriptor *responseDescriptor =
@@ -133,7 +139,10 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
                                             pathPattern:combined                                                keyPath:@"obj"
                                             statusCodes:[NSIndexSet indexSetWithIndex:200]];
     
-    [objectManager addResponseDescriptor:responseDescriptor];
+    [self.venueManager addResponseDescriptor:responseDescriptor];
+    
+
+   
 }
 
 - (void)loadVenues:(NSString *)latitudeV longitdue:(NSString *)longitudeV
@@ -141,11 +150,11 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
    // NSLog(@"\nBeginning of LOADVENUES%@\n", venu[0]);
 
 
-  NSString *combined = [NSString stringWithFormat:@"nearby/%@/%@", latitudeV, longitudeV];
+  NSString *combined = [NSString stringWithFormat:@"/nearby/%@/%@", latitudeV, longitudeV];
 //    NSString *combined = [NSString stringWithFormat:@"nearby/-40.02302400/75.31517700"];
     NSLog(@"Combined lat and long in LOADVENUES \n %@  \n",combined);
     
-    [[RKObjectManager sharedManager] getObjectsAtPath:combined
+    [self.venueManager getObjectsAtPath:combined
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   _venues = mappingResult.array;
@@ -154,7 +163,7 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
                                                 //  [self.venueTableView reloadData];
                                               }
                                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  NSLog(@"What do you mean by 'there is no coffee?': %@", error);
+                                                  NSLog(@"Error: %@", error);
                                               }];
     //[self.venueTableView reloadData];
     [NSThread sleepForTimeInterval:0.7f];
@@ -171,11 +180,14 @@ NSLog(@"\nBeginning of numberOfRowsInSection: %@\n", venu[0]);
 */
  -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
  if([segue.identifier isEqualToString:@"venueSelected"]){
-     NSString *venueSelected;
+     NSString *venueSelected, *venueSelId;
  
      ViewController *vController = (ViewController *)segue.destinationViewController;
      venueSelected = [venueSel valueForKey:@"name"];
+     venueSelId = [venueSel valueForKey:@"venueId"];
+     NSLog(@"VENUE ID: %@",venueSelId);
      vController.venueName =venueSelected;
+     vController.venueId = venueSelId;
     
  }
  

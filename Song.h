@@ -10,10 +10,12 @@
 
 @interface Song : NSObject
 
-@property (nonatomic, strong) NSString *display; // name of song
-@property (nonatomic, strong) NSString *detail; // artist name
-@property (nonatomic, strong) NSString *image; // image filename
-@property (nonatomic, strong) NSString *numVotes;
+@property (nonatomic, strong) NSString *trackname; // name of song
+@property (nonatomic, strong) NSString *trackartist; // artist name
+@property (nonatomic, strong) NSString *trackalbum;
+@property (nonatomic, strong) NSString *trackid;
+@property (nonatomic, strong) NSString *trackvotes;
+@property (nonatomic, strong) NSString *currenttrack;
 
 
 @end

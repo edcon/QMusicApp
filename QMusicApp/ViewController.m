@@ -13,11 +13,12 @@
 #import "venueViewController.h"
 #import "Song.h"
 
-NSArray *venu;
+NSArray *track, *trackAlbum, *trackArtist;
 
 @interface ViewController ()
 
-@property (nonatomic, strong) NSArray *venues;
+@property (nonatomic, strong) NSArray *songs;
+@property RKObjectManager *songManager;
 
 @end
 
@@ -51,14 +52,26 @@ CLLocation *crnLoc;
 @synthesize songImage;
 
 @synthesize venueName;
+@synthesize venueId;
 
+//-(void)viewWillAppear:(BOOL)animated{
+  //  [super viewWillAppear:animated];
+ 
+    //[tableView reloadData];
 
+//}
 
 - (void)viewDidLoad {
+    
+    
+    
     [super viewDidLoad];
 
+  [self configureRestKit2];
+    [self loadSongs];
+
     
-    
+
     
     //GET LOCATION
     
@@ -77,14 +90,20 @@ CLLocation *crnLoc;
     [locationManager startUpdatingLocation];  //requesting location updates
     
 
-    
 
     [self.tableView reloadData];
-  
     
     if(venueName == nil){
         venueName = @"Venue";
     }
+    
+    if(venueId != nil){
+        [self configureRestKit2];
+        
+        [self loadSongs];
+    }
+    
+    
     //Handle venue information and current playing song info
     [venueButton setTitle:venueName forState:UIControlStateNormal];
     currentSongLabel.text = @"Hell of a Night";
@@ -117,6 +136,12 @@ CLLocation *crnLoc;
     [self updateView];
 }
 
+-(void)refreshView{
+    
+    [self viewDidLoad];
+   // [self viewWillAppear];// If viewWillAppear also contains code
+    
+}
 - (void)updateView
 {
     NSIndexPath *path1 = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -140,8 +165,7 @@ CLLocation *crnLoc;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    return 10;
+    return _songs.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -151,6 +175,13 @@ CLLocation *crnLoc;
 
     TheQueCell *cell = (TheQueCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     //TheQueCell *cell = (TheQueCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    Song *song = nil;
+    
+ 
+        song = [_songs objectAtIndex:indexPath.row];
+    
+
 
     
     if (cell == nil)
@@ -161,10 +192,10 @@ CLLocation *crnLoc;
     //Venue *venueName = venu[indexPath.row];
     //NSLog(@"\nNAME OF VENUE2: %@\n", venu[0]);
 if(newCell == FALSE){
-    cell.nameLabel.text = [songNames objectAtIndex:indexPath.row];
-    cell.artistLabel.text = [artistNames objectAtIndex:indexPath.row];
-    cell.voteNumber.text = [numberVotes objectAtIndex:indexPath.row];
-    cell.songArtwork.image = [UIImage imageNamed:[songImages objectAtIndex:indexPath.row]];
+    cell.nameLabel.text = song.trackname;
+    cell.artistLabel.text = song.trackartist;
+    cell.voteNumber.text = song.trackvotes;
+    //cell.songArtwork.image = [UIImage imageNamed:[songImages objectAtIndex:indexPath.row]];
     return cell;
     }else{
         NSLog(@"name: %@", display);
@@ -255,6 +286,101 @@ return cell;
 //*****************************************************************************************************\\
 //*****************************************************************************************************\\
 //*****************************************************************************************************\\
+
+
+
+
+- (void)configureRestKit2
+{
+    
+    [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/html"];
+    
+    // initialize AFNetworking HTTPClient
+    NSURL *baseURL = [NSURL URLWithString:@"http://q-music.herokuapp.com"];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+    
+    // initialize RestKit
+    self.songManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+    
+    // setup object mappings
+    // Our familiar articlesMapping from earlier
+    
+
+    
+    RKObjectMapping *songMapping = [RKObjectMapping mappingForClass:[Song class]];
+    [songMapping addAttributeMappingsFromDictionary:@{
+                                                       @"trackname": @"trackname",
+                                                       @"trackartist": @"trackartist",
+                                                       @"trackalbum": @"trackalbum",
+                                                       @"trackid": @"trackid",
+                                                       @"trackvotes": @"trackvotes",
+                                                       @"currenttrack": @"currenttrack",
+                                                       }];
+    
+    /*// setup object mappings
+     RKObjectMapping *venueMapping = [RKObjectMapping mappingForClass:[Venue class]];
+     [venueMapping addAttributeMappingsFromArray:@[@"name"]];
+     */
+    // setup object mappings
+    RKObjectMapping *venueMapping = [RKObjectMapping mappingForClass:[Venue class]];
+    [venueMapping addAttributeMappingsFromDictionary:@{
+                                                       @"name": @"name",
+                                                       @"id": @"venueId",
+                                                       }];
+    
+    /*// setup object mappings
+     RKObjectMapping *venueMapping = [RKObjectMapping mappingForClass:[Venue class]];
+     [venueMapping addAttributeMappingsFromArray:@[@"name"]];
+     */
+    
+    NSString *combined = [NSString stringWithFormat:@"/tracklist/%@", venueId];
+
+    
+    // register mappings with the provider using a response descriptor
+    RKResponseDescriptor *responseDescriptor2 =
+    [RKResponseDescriptor responseDescriptorWithMapping:songMapping
+                                                 method:RKRequestMethodAny
+                                            pathPattern:combined                                            keyPath:@""
+                                            statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    
+    [self.songManager addResponseDescriptor:responseDescriptor2];
+
+    
+    
+}
+
+- (void)loadSongs
+{
+    // NSLog(@"\nBeginning of LOADVENUES%@\n", venu[0]);
+    
+    
+    NSString *combined = [NSString stringWithFormat:@"/tracklist/%@", venueId];
+    //    NSString *combined = [NSString stringWithFormat:@"nearby/-40.02302400/75.31517700"];
+  //  NSLog(@"Combined lat and long in LOADVENUES \n %@  \n",combined);
+    
+    [self.songManager   getObjectsAtPath:combined
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation2, RKMappingResult *mappingResult2) {
+                                                  _songs = mappingResult2.array;
+                                                  track = [_songs valueForKey:@"trackname"];
+                                                  trackArtist =[_songs valueForKey:@"trackartist"];
+                                                  trackAlbum = [_songs valueForKey:@"trackalbum"];
+                                                
+                                                  NSLog(@"\nNAME OF TRACK!!: %@\n", track[1]);
+                                                  NSLog(@"\nARTIST OF TRACK!!: %@\n", trackArtist[1]);
+                                                  NSLog(@"\nALBUM OF TRACK!!: %@\n", trackAlbum[1]);
+
+                                                  //  [self.venueTableView reloadData];
+                                              }
+                                              failure:^(RKObjectRequestOperation *operation2, NSError *error) {
+                                                  NSLog(@"Error: %@", error);
+                                              }];
+   
+    [NSThread sleepForTimeInterval:.9f];
+    
+     [self.tableView reloadData];
+    //[self refreshView];
+}
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

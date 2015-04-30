@@ -28,47 +28,51 @@
     NSArray *searchResults;
     
     NSArray *songNames2;
-NSArray *songNames;
-NSArray *artistNames;
-NSArray *numberVotes;
-NSArray *songImages;
-NSString *voteUp;
-NSNumber *upVote;
+    NSArray *songNames;
+    NSArray *artistNames;
+    NSArray *numberVotes;
+    NSArray *songImages;
+    NSString *voteUp;
+    NSNumber *upVote;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self configureRestKit];
+    [self loadSongs];
+    
+    
     Song *song1 = [Song new];
-    song1.display = @"Pursuit of Happiness";
-    song1.detail = @"Kid Cudi";
-    song1.image = @"poh.jpg";
+    song1.trackname = @"Pursuit of Happiness";
+    song1.trackartist = @"Kid Cudi";
+   // song1.image = @"poh.jpg";
     
     Song *song2 = [Song new];
-    song2.display = @"17 Years";
-    song2.detail = @"Ratatat";
-    song2.image = @"ratatat.jpg";
+    song2.trackname = @"17 Years";
+    song2.trackartist = @"Ratatat";
+   // song2.image = @"ratatat.jpg";
     
     Song *song3 = [Song new];
-    song3.display = @"Say My Name";
-    song3.detail = @"ODESZA";
-    song3.image = @"smn.jpg";
+    song3.trackname = @"Say My Name";
+    song3.trackartist = @"ODESZA";
+    //song3.image = @"smn.jpg";
  
     
     Song *song4 = [Song new];
-    song4.display = @"Pay No Mind";
-    song4.detail = @"Madeon";
-    song4.image = @"adventure.png";
+    song4.trackname = @"Pay No Mind";
+    song4.trackartist = @"Madeon";
+    //song4.image = @"adventure.png";
     
     Song *song5 = [Song new];
-    song5.display = @"Heads Will Roll (A-track Remix)";
-    song5.detail = @"Yeah Yeah Yeahs";
-    song5.image = @"hwr.jpg";
+    song5.trackname = @"Heads Will Roll (A-track Remix)";
+    song5.trackartist = @"Yeah Yeah Yeahs";
+    //song5.image = @"hwr.jpg";
     
     Song *song6 = [Song new];
-    song6.display = @"Firestone";
-    song6.detail = @"Kygo";
-    song6.image = @"kygo.jpg";
+    song6.trackname = @"Firestone";
+    song6.trackartist = @"Kygo";
+    //song6.image = @"kygo.jpg";
     songs = [NSArray arrayWithObjects:song1,song2,song3, song4, song5, song6, nil];
     
 
@@ -116,10 +120,10 @@ NSNumber *upVote;
     }
     
     
-    cell.nameLabel.text = song.display;//[songs objectAtIndex:indexPath.row];
-    cell.artistLabel.text = song.detail;//[artistNames objectAtIndex:indexPath.row];
+    cell.nameLabel.text = song.trackname;//[songs objectAtIndex:indexPath.row];
+    cell.artistLabel.text = song.trackartist;//[artistNames objectAtIndex:indexPath.row];
     //cell.voteNumber.text = [numberVotes objectAtIndex:indexPath.row];
-    cell.songArtwork.image = [UIImage imageNamed:song.image];
+    //cell.songArtwork.image = [UIImage imageNamed:song.image];
     cell.voteIcon.hidden = YES;
     cell.voteNumber.hidden = YES;
     return cell;
@@ -149,7 +153,7 @@ NSNumber *upVote;
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"display contains[c] %@", searchText];
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"trackname contains[c] %@", searchText];
     searchResults = [songs filteredArrayUsingPredicate:resultPredicate];
 }
 
@@ -173,13 +177,13 @@ NSNumber *upVote;
 //*******************************************  RESTKIT  ***********************************************\\
 //*****************************************************************************************************\\
 
-/*
-- (void)configureRestKit:(NSString *)latitudeC longitdue:(NSString *)longitudeC
+
+- (void)configureRestKit
 {  
     
     // [RKMIMETypeSerialization registerClass:[RKNSJSONSerialization class] forMIMEType:@"text/json"];
     // initialize AFNetworking HTTPClient
-    NSURL *baseURL = [NSURL URLWithString:@"http://q-music.herokuapp.com/"];
+    NSURL *baseURL = [NSURL URLWithString:@"http://q-music.herokuapp.com"];
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     
     // initialize RestKit
@@ -187,39 +191,35 @@ NSNumber *upVote;
     
     // setup object mappings
     RKObjectMapping *songMapping = [RKObjectMapping mappingForClass:[Song class]];
-    [songMapping addAttributeMappingsFromArray:@[@"display", @"detail"]];
+    [songMapping addAttributeMappingsFromArray:@[@"trackartist"]];
     
-    //NSLog(@"/n Latitude: %.8f, Longitude: %.8f",40.02302400,-75.31517700);
-   // NSLog(@"/n Lat: %@, Lon: %@",lat,lon);
-    
-    
-   // NSString *combined = [NSString stringWithFormat:@"nearby/40.02302400/75.31517700"];
+
     
     // register mappings with the provider using a response descriptor
     RKResponseDescriptor *responseDescriptor =
     [RKResponseDescriptor responseDescriptorWithMapping:songMapping
                                                  method:RKRequestMethodGET
-                                            pathPattern:@"/search"                                                keyPath:nil
+                                            pathPattern:@"/search/kanye"                                                keyPath:nil
                                             statusCodes:[NSIndexSet indexSetWithIndex:200]];
     
     [objectManager addResponseDescriptor:responseDescriptor];
 }
 
-- (void)loadVenues:(NSString *)latitudeV longitdue:(NSString *)longitudeV stringS:(NSString *)search
+- (void)loadSongs
 {
     // NSLog(@"\nBeginning of LOADVENUES%@\n", venu[0]);
     
-    
+   // NSString *searchText;
     //    NSString *combined = [NSString stringWithFormat:@"nearby/%@/%@", latitudeV, longitudeV];
     
-    NSDictionary *queryParams = @{@"detail" : search,
-                                  };
+    //NSDictionary *queryParams = @{@"trackartist" : search,
+                               //   };
     
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"/search"
-                                           parameters:queryParams
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/search/kanye"
+                                           parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   songs = mappingResult.array;
-                                                  songNames2 = [songs valueForKey:@"detail"];
+                                                  songNames2 = [songs valueForKey:@"trackartist"];
                                                   NSLog(@"\nNAME OF SONG: %@\n", songNames2[0]);
                                                   //  [self.venueTableView reloadData];
                                               }
@@ -233,7 +233,6 @@ NSNumber *upVote;
 }
 
 
-*/
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -242,9 +241,9 @@ NSNumber *upVote;
         //NSLog(@"\n\n LATITUDE: %@, LONGITUDE: %@\n\n",latitude,longitude);
         
         ViewController *controller = (ViewController *)segue.destinationViewController;
-        controller.display =songSel.display ;
-        controller.detail = songSel.detail;
-        controller.songImage =songSel.image;
+       // controller.trackname =songSel.trackname ;
+       // controller.trackartist = songSel.trackartist;
+     //   controller.songImage =songSel.image;
         controller.newCell = TRUE;
     }
 }

@@ -11,5 +11,6 @@
 @interface Venue : NSObject
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *venueId;
 
 @end

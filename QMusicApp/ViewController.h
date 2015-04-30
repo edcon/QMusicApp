@@ -34,6 +34,7 @@
 
 
 @property (nonatomic, strong) NSString *venueName;
+@property (nonatomic, strong) NSString *venueId;
 
 @end
 
